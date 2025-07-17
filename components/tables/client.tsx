@@ -5,7 +5,7 @@ import UploadSection from "../ui/forms/upload"
 import { Heading } from "./heading"
 import { useShallow } from "zustand/react/shallow"
 import { ClientRow } from "./rows/client-rows"
-import { ClientData } from "../cards/client"
+
 
 
 export default function ClientTable() {
@@ -31,11 +31,12 @@ export default function ClientTable() {
 							
 									<ClientRow
 										key={index}
-										clientId={client.ClientID}
-										clientName={client.ClientName}
+										ClientID={client.ClientID}
+										ClientName={client.ClientName}
 										index={index}
-										requestedTaskIDs={client.RequestedTaskIDs}
-										priorityLevel={client.PriorityLevel}
+										RequestedTaskIDs={client.RequestedTaskIDs}
+										PriorityLevel={client.PriorityLevel}
+										GroupTag={client.GroupTag}
 									/>
 								
 								

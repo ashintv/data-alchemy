@@ -1,29 +1,15 @@
 "use client"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Input } from "@/components/ui/input"
-import { Client, useDataStore, Worker } from "@/lib/store/data"
-import { Button } from "../ui/button"
-import { useState } from "react"
-import { ClientData } from "../cards/client"
+import { useDataStore } from "@/lib/store/data"
 import { AlertDelete } from "../alerts/alertdelete"
 import UploadSection from "../ui/forms/upload"
-import { WorkerEditor } from "../cards/worker"
-import { WorkerCell } from "./cell/worker-cell"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip"
 import { Heading } from "./heading"
 import { WorkerRow } from "./rows/worker-rows"
+import { useShallow } from "zustand/react/shallow"
 export default function WorkersTable() {
-	const [focus, setFocus] = useState<Worker | null>(null)
-	const { workers, setWorkers } = useDataStore()
-	const [errors, setErrors] = useState<Record<string, string>>({})
+	const workers = useDataStore(useShallow((s) => s.workers))
 	return (
 		<div className="flex">
-			{focus && (
-				<div className=" border-primary rounded-xl w-4/6 h-screen mt-20 ">
-					<WorkerEditor worker={focus} setFocus={setFocus} />
-				</div>
-			)}
-
 			<div className="h-screen w-full  overflow-scroll">
 				<Heading value="Workers" />
 				<div className=" bg-background  border-primary  rounded-2xl ">

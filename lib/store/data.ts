@@ -9,10 +9,10 @@ export interface error {
 export interface Client {
 	ClientID: string
 	ClientName: string
-	PriorityLevel: number
+	PriorityLevel: string
 	RequestedTaskIDs: string
 	GroupTag: string
-	AttributesJSON: string
+	// AttributesJSON: string
 	error?: Record<string, string>
 }
 

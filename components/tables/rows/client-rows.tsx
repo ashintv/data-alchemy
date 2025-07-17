@@ -1,17 +1,29 @@
 import { TableCell, TableRow } from "@/components/ui/table"
-import { memo } from "react"
+import { memo, useEffect } from "react"
 import { ClientCell } from "../cell/client-cell"
 import { Button } from "@/components/ui/button"
 import { DeleteIcon } from "@/components/icons/delete"
-export const ClientRow = memo(({ clientId, clientName, index, requestedTaskIDs, priorityLevel }: RowsP) => {
+
+import { checkErrors } from "@/lib/validators/cliient-validator"
+export const ClientRow = memo(({ ClientID, ClientName, index, RequestedTaskIDs, PriorityLevel  ,GroupTag}: RowsP) => {
+	const error = checkErrors({
+		ClientID,
+		ClientName,
+		RequestedTaskIDs,
+		PriorityLevel,
+		GroupTag
+	})
+	useEffect(()=>{
+		console.log(error)
+	},[])
 	return (
 		<>
-			<TableRow key={clientId}>
-				<TableCell>{clientId}</TableCell>
-				<ClientCell value={clientName} name={"ClientName"} index={index} />
-				<ClientCell value={String(priorityLevel)} name="PriorityLevel" index={index} />
-				<ClientCell value={requestedTaskIDs} name="RequestedTaskIDs" index={index} />
-				<ClientCell value={"asd"} name="GroupTag" index={3} />
+			<TableRow key={ClientID}>
+				<TableCell>{ClientID}</TableCell>
+				<ClientCell value={ClientName} name={"ClientName"} index={index} error={error?.ClientName}/>
+				<ClientCell value={PriorityLevel} name="PriorityLevel" index={index} error={error?.PriorityLevel} />
+				<ClientCell value={RequestedTaskIDs} name="RequestedTaskIDs" index={index}  error={error?.RequestedTaskIDs}/>
+				<ClientCell value={GroupTag} name="GroupTag" index={index} error={error?.GroupTag} />
 				<TableCell>
 					<Button>
 						<DeleteIcon />
@@ -23,9 +35,10 @@ export const ClientRow = memo(({ clientId, clientName, index, requestedTaskIDs, 
 })
 
 interface RowsP {
-	clientId: string
-	clientName: string
+	ClientID: string
+	ClientName: string
 	index: number
-	requestedTaskIDs: string
-	priorityLevel: number
+	RequestedTaskIDs: string
+	PriorityLevel: string,
+	GroupTag:string
 }

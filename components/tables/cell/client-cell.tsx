@@ -50,7 +50,7 @@ export const ClientCell = memo(function ClientCell({ value, error, index, name }
 
 interface ClientCellI {
 	value: string
-	error?: string
+	error?: string | null
 	name: string
 	index: number
 }

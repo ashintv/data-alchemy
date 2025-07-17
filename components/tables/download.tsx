@@ -5,7 +5,7 @@ import { Button } from "../ui/button"
 import { Download } from "../icons/download"
 
 export function DownloadCSV() {
-	console.log("DownloadCSV component rendered")
+
 	const { clients } = useDataStore()
 	function handleDownload() {
 		const csv = jsonToCSV(clients)
