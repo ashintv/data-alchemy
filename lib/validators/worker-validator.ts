@@ -1,7 +1,7 @@
 import { Worker } from "@/lib/store/data"
 import { WorkerSchema } from "../schema/worker"
 
-const checkErrors = (worker: Worker) => {
+export const checkErrorsWorker = (worker: Worker) => {
 	const parse = WorkerSchema.safeParse(worker)
 	if (!parse.success) {
 		const errors_gen: Record<string, string> = {}
@@ -17,7 +17,7 @@ const checkErrors = (worker: Worker) => {
 
 export const workerValidors = (Workers: Worker[]) => {
 	Workers.forEach((x) => {
-		const error = checkErrors(x)
+		const error = checkErrorsWorker(x)
 		if (error) {
 			x.error = error
 		} else {

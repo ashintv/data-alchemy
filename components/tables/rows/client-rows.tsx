@@ -13,9 +13,6 @@ export const ClientRow = memo(({ ClientID, ClientName, index, RequestedTaskIDs, 
 		PriorityLevel,
 		GroupTag
 	})
-	useEffect(()=>{
-		console.log(error)
-	},[])
 	return (
 		<>
 			<TableRow key={ClientID}>

@@ -2,7 +2,7 @@ import { TaskSchema } from "../schema/tasks"
 import { Task } from "../store/data"
 
 
-const checkErrorsTask = (task: Task) => {
+export const checkErrorsTask = (task: Task) => {
         const parse = TaskSchema.safeParse(task)
         if (!parse.success) {
                 const errors_gen: Record<string, string> = {}

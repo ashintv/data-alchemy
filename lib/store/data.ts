@@ -21,9 +21,9 @@ export interface Worker {
 	WorkerName: string
 	Skills: string
 	AvailableSlots: string
-	MaxLoadPerPhase: number
+	MaxLoadPerPhase: string
 	WorkerGroup: string
-	QualificationLevel: number
+	QualificationLevel: string
 	error?: Record<string, string>
 }
 
@@ -31,10 +31,10 @@ export interface Task {
 	TaskID: string
 	TaskName: string
 	Category: string
-	Duration: number
+	Duration: string
 	RequiredSkills: string
 	PreferredPhases: string
-	MaxConcurrent: number
+	MaxConcurrent: string
 	error?: Record<string, string>
 }
 

@@ -28,7 +28,6 @@ export default function ClientTable() {
 						</TableHeader>
 						<TableBody>
 							{clients.map((client, index) => (
-							
 									<ClientRow
 										key={index}
 										ClientID={client.ClientID}
@@ -38,7 +37,6 @@ export default function ClientTable() {
 										PriorityLevel={client.PriorityLevel}
 										GroupTag={client.GroupTag}
 									/>
-								
 								
 							))}
 							{clients.length === 0 && (
