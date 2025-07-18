@@ -15,16 +15,3 @@ export const checkErrorsWorker = (worker: Worker) => {
 	return null
 }
 
-export const workerValidors = (Workers: Worker[]) => {
-	Workers.forEach((x) => {
-		const error = checkErrorsWorker(x)
-		if (error) {
-			x.error = error
-		} else {
-			if (x.error) {
-				delete x.error
-			}
-		}
-	})
-	return Workers
-}

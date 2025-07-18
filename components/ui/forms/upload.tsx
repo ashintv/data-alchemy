@@ -5,9 +5,7 @@ import Papa from "papaparse"
 import { redirect } from "next/navigation"
 import { Input } from "../input"
 import { Button } from "../button"
-import { clientValidators } from "@/lib/validators/cliient-validator"
-import { workerValidors } from "@/lib/validators/worker-validator"
-import { tasksValidors } from "@/lib/validators/tasks-validator"
+
 export default function UploadSection() {
 	const { setClients, setWorkers, setTasks} = useDataStore()
 	const handleClients = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,8 +16,7 @@ export default function UploadSection() {
 			skipEmptyLines: true,
 			complete: (result) => {
 				const data = result.data as any[]
-				const parsed_data = clientValidators(data)
-				setClients(() => parsed_data)
+				setClients(() => data)
 			},
 		})
 	}
@@ -31,8 +28,7 @@ export default function UploadSection() {
 			skipEmptyLines: true,
 			complete: (result) => {
 				const data = result.data as any[]
-				const parsed_data = workerValidors(data)
-				setWorkers(() => parsed_data)
+				setWorkers(() => data)
 			},
 		})
 	}
@@ -45,7 +41,6 @@ export default function UploadSection() {
 			skipEmptyLines: true,
 			complete: (result) => {
 				const data = result.data as any[]
-				const parsed_data = tasksValidors(data)
 				setTasks(() => data)
 			},
 		})

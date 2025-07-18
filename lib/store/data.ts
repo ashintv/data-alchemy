@@ -1,7 +1,5 @@
 import { create } from "zustand"
-import { clientValidators } from "../validators/cliient-validator"
-import { workerValidors } from "../validators/worker-validator"
-import { tasksValidors } from "../validators/tasks-validator"
+
 export interface error {
 	field: string
 	error: string | null
@@ -15,7 +13,6 @@ export interface Client {
 	// AttributesJSON: string
 	error?: Record<string, string>
 }
-
 export interface Worker {
 	WorkerID: string
 	WorkerName: string

@@ -16,16 +16,3 @@ export const checkErrorsTask = (task: Task) => {
         return null
 }
 
-export const tasksValidors = (tasks: Task[]) => {
-        tasks.forEach((x) => {
-                const error = checkErrorsTask(x)
-                if (error) {
-                        x.error = error
-                } else {
-                        if (x.error) {
-                                delete x.error
-                        }
-                }
-        })
-        return tasks
-}
