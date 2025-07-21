@@ -41,8 +41,8 @@ export interface DataStore {
 	clients: Client[]
 	workers: Worker[]
 	tasks: Task[]
-	Rules:Record<string, any>
-	setRules: (updater: (rules: Record<string, any>) => Record<string, any>) => void
+	Rules:Record<string, any> []
+	setRules: (updater: (rules: Record<string, any> []) => Record<string, any> []) => void
 	setClients: (updater: (clients: Client[]) => Client[]) => void
 	setWorkers: (updater: (clients: Worker[]) => Worker[]) => void
 	setTasks: (updater: (clients: Task[]) => Task[]) => void
@@ -74,7 +74,7 @@ export const useDataStore = create<DataStore>((set) => ({
 	clients: [],
 	workers: [],
 	tasks: [],
-	Rules:	{},
+	Rules:	[],
 	setRules: (updater) => {
 		set((state) => {
 			const next = updater(state.Rules)
