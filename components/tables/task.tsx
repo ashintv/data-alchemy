@@ -7,7 +7,9 @@ import { AlertDelete } from "../alerts/alertdelete"
 import { TaskRow } from "./rows/task-row"
 
 export function TasksTable() {
-	const { tasks, setTasks } = useDataStore()
+	const tasks = useDataStore((s) => s.tasks)
+	// const tasks = full_tasks.filter((task) => task.TaskID !== )
+	const setTasks = useDataStore((s) => s.setTasks)
 	return (
 		<div className="flex">
 			<div className="h-screen w-full  overflow-scroll">
@@ -29,7 +31,7 @@ export function TasksTable() {
 							<TableBody>
 								{tasks.map((task, index) => (
 									<TaskRow
-                                                                                key={index}
+										key={index}
 										index={index}
 										TaskID={task.TaskID}
 										TaskName={task.TaskName}

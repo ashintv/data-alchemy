@@ -6,15 +6,13 @@ import { Heading } from "./heading"
 import { useShallow } from "zustand/react/shallow"
 import { ClientRow } from "./rows/client-rows"
 
-
-
 export default function ClientTable() {
 	const { clients, setClients, tasks } = useDataStore(useShallow((s) => s))
 	return (
-		<div className="h-screen overflow-scroll  ">
+		<div className="h-screen w-full overflow-scroll  ">
 			<Heading value="Clients" />
 			<div className="bg-background  p-5  rounded-2xl ">
-				<div className="w-full overflow-x-auto ">
+				<div className="w-full overflow-x-scroll"> 
 					<Table className="">
 						<TableHeader className="p-15">
 							<TableRow>

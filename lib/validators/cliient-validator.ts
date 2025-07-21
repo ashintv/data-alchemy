@@ -11,7 +11,6 @@ export const checkErrors = (client: Client ) => {
 		})
 		return errors_gen
 	}
-
 	return null
 }
 
