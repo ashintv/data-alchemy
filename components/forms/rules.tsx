@@ -1,13 +1,12 @@
 'use clent'
-
 import { memo, use, useEffect, useState } from "react"
 import { Selector } from "./selector"
 import { Button } from "../ui/button"
 import { Label } from "../ui/label"
 import { Input } from "../ui/input"
 import { Task, useDataStore, useRuleForm } from "@/lib/store/data"
-import { set } from "zod"
-import { ta } from "zod/v4/locales"
+
+
 
 
 export function Rules() {

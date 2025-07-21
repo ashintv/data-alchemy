@@ -19,6 +19,7 @@ export function AppSidebar() {
                 <div className="text-4xl font-extrabold font-mono font-stretch-120%">Data Alc</div>
                 <p className="text-sm text-muted-foreground">Manage your data efficiently</p>
             </SidebarHeader>
+            <SidebarContents/>
             {/* <SidebarContents /> */}
             <SidebarFooterContainer />
         </Sidebar>

@@ -1,15 +1,14 @@
-import { useDataStore } from "@/lib/store/data"
+import { Task, useDataStore } from "@/lib/store/data"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table"
 import { TaskCell } from "./cell/task-cell"
 import UploadSection from "../ui/forms/upload"
 import { Heading } from "./heading"
 import { AlertDelete } from "../alerts/alertdelete"
 import { TaskRow } from "./rows/task-row"
+import { useState } from "react"
 
 export function TasksTable() {
 	const tasks = useDataStore((s) => s.tasks)
-	// const tasks = full_tasks.filter((task) => task.TaskID !== )
-	const setTasks = useDataStore((s) => s.setTasks)
 	return (
 		<div className="flex">
 			<div className="h-screen w-full  overflow-scroll">
