@@ -5,14 +5,15 @@ import { Button } from "@/components/ui/button"
 import { DeleteIcon } from "@/components/icons/delete"
 
 import { checkErrors } from "@/lib/validators/cliient-validator"
-export const ClientRow = memo(({ ClientID, ClientName, index, RequestedTaskIDs, PriorityLevel  ,GroupTag}: RowsP) => {
+import { Client } from "@/lib/store/data"
+export const ClientRow = memo(({ ClientID, ClientName, index, RequestedTaskIDs, PriorityLevel  ,GroupTag ,tasks}: RowsP) => {
 	const error = checkErrors({
 		ClientID,
 		ClientName,
 		RequestedTaskIDs,
 		PriorityLevel,
 		GroupTag
-	})
+	} ,tasks)
 	return (
 		<>
 			<TableRow key={ClientID}>
@@ -37,5 +38,6 @@ interface RowsP {
 	index: number
 	RequestedTaskIDs: string
 	PriorityLevel: string,
-	GroupTag:string
+	GroupTag:string,
+	tasks:string []
 }

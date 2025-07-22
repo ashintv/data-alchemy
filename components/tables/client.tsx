@@ -7,7 +7,8 @@ import { useShallow } from "zustand/react/shallow"
 import { ClientRow } from "./rows/client-rows"
 
 export default function ClientTable() {
-	const { clients, setClients, tasks } = useDataStore(useShallow((s) => s))
+	const clients  = useDataStore(useShallow((s) => s.clients))
+	const tasks = useDataStore(useShallow((s)=>s.tasks.map(x=>x.TaskID)))
 	return (
 		<div className="h-screen w-full overflow-scroll  ">
 			<Heading value="Clients" />
@@ -34,6 +35,7 @@ export default function ClientTable() {
 										RequestedTaskIDs={client.RequestedTaskIDs}
 										PriorityLevel={client.PriorityLevel}
 										GroupTag={client.GroupTag}
+										tasks={tasks}
 									/>
 								
 							))}
