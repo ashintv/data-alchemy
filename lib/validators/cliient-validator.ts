@@ -14,7 +14,7 @@ export const checkErrors = (client: Client, tasks: string[]) => {
 	for (const x of RequestedTaskIDs) {
 		if (!tasks.includes(x)) {
 			errors_gen["RequestedTaskIDs"] = "task does not exist"
-			return errors_gen // ✅ now this works
+			return errors_gen 
 		}
 	}
 	return null

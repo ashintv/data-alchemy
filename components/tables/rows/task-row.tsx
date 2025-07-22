@@ -12,8 +12,9 @@ interface TaskRowI {
 	RequiredSkills: string
 	PreferredPhases: string
 	MaxConcurrent: string
+	WorkerSkills:string []
 }
-export const TaskRow = memo(({ TaskID, TaskName, Category, Duration, RequiredSkills, index, PreferredPhases, MaxConcurrent }: TaskRowI) => {
+export const TaskRow = memo(({ TaskID, TaskName, WorkerSkills, Category, Duration, RequiredSkills, index, PreferredPhases, MaxConcurrent }: TaskRowI) => {
 	const errors = checkErrorsTask({
 		TaskID,
 		TaskName,
@@ -22,7 +23,8 @@ export const TaskRow = memo(({ TaskID, TaskName, Category, Duration, RequiredSki
 		RequiredSkills,
 		PreferredPhases,
 		MaxConcurrent:MaxConcurrent,
-	})
+		
+	},WorkerSkills)
 	return (
 		<TableRow key={TaskID}>
 			<TaskCell name="TaskID" value={TaskID} index={index} error={errors?.TaskID} />
