@@ -6,7 +6,6 @@ export const checkErrorsTask = (task: Task, WorkerSkills: string[]) => {
         const parse = TaskSchema.safeParse(task)
         const errors_gen: Record<string, string> = {}
         if (!parse.success) {
-
                 const errors: any[] = JSON.parse(parse.error.message)
                 console.table(errors)
                 errors.forEach((x) => {
@@ -21,7 +20,6 @@ export const checkErrorsTask = (task: Task, WorkerSkills: string[]) => {
                         return errors_gen
                 }
         }
-
         return null
 }
 

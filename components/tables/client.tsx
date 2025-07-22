@@ -22,7 +22,8 @@ export default function ClientTable() {
 								<TableHead>PriorityLevel</TableHead>
 								<TableHead>RequestedTaskIDs</TableHead>
 								<TableHead>GroupTag</TableHead>
-								<TableHead>Actions</TableHead>
+								<TableHead>AttributesJSON</TableHead>
+								
 							</TableRow>
 						</TableHeader>
 						<TableBody>
@@ -35,6 +36,7 @@ export default function ClientTable() {
 										RequestedTaskIDs={client.RequestedTaskIDs}
 										PriorityLevel={client.PriorityLevel}
 										GroupTag={client.GroupTag}
+										AttributesJSON = {client.AttributesJSON}
 										tasks={tasks}
 									/>
 								

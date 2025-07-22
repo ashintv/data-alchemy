@@ -12,11 +12,11 @@ export const checkErrors = (client: Client, tasks: string[]) => {
 	}
 	const RequestedTaskIDs = client.RequestedTaskIDs.split(',').map(x => x.trim())
 	for (const x of RequestedTaskIDs) {
-		if (!tasks.includes(x)) {
-			errors_gen["RequestedTaskIDs"] = "task does not exist"
-			return errors_gen 
-		}
+	if (!tasks.includes(x)) {
+		errors_gen["RequestedTaskIDs"] = "task does not exist"
+		return errors_gen 
 	}
+}
 	return null
 }
 

@@ -6,27 +6,25 @@ import { DeleteIcon } from "@/components/icons/delete"
 
 import { checkErrors } from "@/lib/validators/cliient-validator"
 import { Client } from "@/lib/store/data"
-export const ClientRow = memo(({ ClientID, ClientName, index, RequestedTaskIDs, PriorityLevel  ,GroupTag ,tasks}: RowsP) => {
+export const ClientRow = memo(({ ClientID, ClientName, index, RequestedTaskIDs, PriorityLevel, GroupTag, tasks ,AttributesJSON}: RowsP) => {
 	const error = checkErrors({
 		ClientID,
 		ClientName,
 		RequestedTaskIDs,
 		PriorityLevel,
-		GroupTag
-	} ,tasks)
+		GroupTag,
+		AttributesJSON
+	}, tasks)
 	return (
 		<>
 			<TableRow key={ClientID}>
 				<TableCell>{ClientID}</TableCell>
-				<ClientCell value={ClientName} name={"ClientName"} index={index} error={error?.ClientName}/>
+				<ClientCell value={ClientName} name={"ClientName"} index={index} error={error?.ClientName} />
 				<ClientCell value={PriorityLevel} name="PriorityLevel" index={index} error={error?.PriorityLevel} />
-				<ClientCell value={RequestedTaskIDs} name="RequestedTaskIDs" index={index}  error={error?.RequestedTaskIDs}/>
+				<ClientCell value={RequestedTaskIDs} name="RequestedTaskIDs" index={index} error={error?.RequestedTaskIDs}/>
 				<ClientCell value={GroupTag} name="GroupTag" index={index} error={error?.GroupTag} />
-				<TableCell>
-					<Button>
-						<DeleteIcon />
-					</Button>
-				</TableCell>
+				<ClientCell value={AttributesJSON} name="GroupTag" index={index} error={error?.AttributesJSON} />
+				
 			</TableRow>
 		</>
 	)
@@ -38,6 +36,7 @@ interface RowsP {
 	index: number
 	RequestedTaskIDs: string
 	PriorityLevel: string,
-	GroupTag:string,
-	tasks:string []
+	GroupTag: string,
+	AttributesJSON:string
+	tasks: string[]
 }

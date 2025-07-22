@@ -12,7 +12,7 @@ export interface Client {
 	PriorityLevel: string
 	RequestedTaskIDs: string
 	GroupTag: string
-	// AttributesJSON: string
+	AttributesJSON: string
 	error?: Record<string, string>
 }
 export interface Worker {
