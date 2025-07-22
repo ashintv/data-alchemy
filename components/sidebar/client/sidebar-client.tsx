@@ -1,7 +1,7 @@
 import { useDataStore } from "@/lib/store/data";
 import { Label } from "@radix-ui/react-label";
 import { useShallow } from "zustand/react/shallow";
-import { SortSelector } from "./sort-selector";
+import { SortSelector } from "./selector-client";
 import { useEffect, useState } from "react";
 
 
@@ -9,7 +9,6 @@ export function SidebarClient() {
     const setClients = useDataStore(useShallow((s) => s.setClients))
     const [selected, setSelected] = useState<'Priority' | 'ClientID' | 'Req.Task'>('ClientID')
     useEffect(() => {
-
         if (selected === 'Priority') {
             setClients((clients_) => [...clients_].sort((a, b) => parseInt(b.PriorityLevel) - parseInt(a.PriorityLevel)))
         } else if (selected === 'ClientID') {
