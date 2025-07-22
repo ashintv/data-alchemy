@@ -6,7 +6,7 @@ import { SidebarLabel } from "./sidebar-label";
 import { useSidebar } from "@/lib/store/data";
 import { SidebarClient } from "./client/sidebar-client";
 import { SidebarTask } from "./tasks/sidebar-task";
-
+import { SidebarWorker } from "./worker/sidebar-worker";
 export const SidebarContents = memo(() => {
     const { currentTab, setCurrentTab } = useSidebar()
     return (
@@ -14,6 +14,7 @@ export const SidebarContents = memo(() => {
             <SidebarGroup>
                 {currentTab === 'clients' && <SidebarClient />}
                 {currentTab === 'tasks' && <SidebarTask />}
+                {currentTab === 'workers' && <SidebarWorker />}
             </SidebarGroup>
         </SidebarContent>
     )

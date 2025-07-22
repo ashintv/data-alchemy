@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/select"
 import { Dispatch, SetStateAction } from "react"
 
-
 export function SortSelectorTask({ value, setSelected }: SelectorProps) {
     return (
         <Select value={value} onValueChange={(value) => {
