@@ -17,7 +17,7 @@ export function SidebarWorker() {
         } else if (selected === 'Available Slots') {
             setWorkers((worker) => [...worker].sort((a, b) => b.AvailableSlots.length - a.AvailableSlots.length))
         }
-    }, [selected])
+    }, [selected,setWorkers])
     return (
         <div className="flex flex-col border rounded-xl p-2  text-md border-primary/20 gap-2">
             Sort by : <SortSelectorWorker value={selected} setSelected={setSelected} />

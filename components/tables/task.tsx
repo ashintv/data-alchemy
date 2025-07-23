@@ -1,11 +1,8 @@
-import { Task, useDataStore } from "@/lib/store/data"
+import {  useDataStore } from "@/lib/store/data"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table"
-import { TaskCell } from "./cell/task-cell"
 import UploadSection from "../ui/forms/upload"
 import { Heading } from "./heading"
-import { AlertDelete } from "../alerts/alertdelete"
 import { TaskRow } from "./rows/task-row"
-import { use, useEffect, useState } from "react"
 import { useShallow } from "zustand/react/shallow"
 
 export function TasksTable() {

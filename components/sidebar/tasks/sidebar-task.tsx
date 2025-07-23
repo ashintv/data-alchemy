@@ -3,7 +3,7 @@ import { Label } from "@radix-ui/react-label";
 import { useShallow } from "zustand/react/shallow";
 import { useEffect, useState } from "react";
 import { SortSelectorTask } from "./selector-task";
-import { parse } from "path";
+
 
 
 export function SidebarTask() {
@@ -16,7 +16,7 @@ export function SidebarTask() {
             setTasks((task) => [...task].sort((a, b) => parseInt(b.MaxConcurrent) - parseInt(a.MaxConcurrent)))
         }
         
-    }, [selected])
+    }, [selected,setTasks])
     return (
         <div className="flex flex-col border rounded-xl p-2  text-md border-primary/20 gap-2">
             Sort by : <SortSelectorTask value={selected} setSelected={setSelected} />

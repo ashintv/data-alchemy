@@ -14,7 +14,7 @@ interface TaskRowI {
 	MaxConcurrent: string
 	WorkerSkills:string []
 }
-export const TaskRow = memo(({ TaskID, TaskName, WorkerSkills, Category, Duration, RequiredSkills, index, PreferredPhases, MaxConcurrent }: TaskRowI) => {
+export const TaskRow = memo(function TaskRow({ TaskID, TaskName, WorkerSkills, Category, Duration, RequiredSkills, index, PreferredPhases, MaxConcurrent }: TaskRowI) {
 	const errors = checkErrorsTask({
 		TaskID,
 		TaskName,
@@ -35,7 +35,7 @@ export const TaskRow = memo(({ TaskID, TaskName, WorkerSkills, Category, Duratio
 			<TaskCell name="PreferredPhases" value={PreferredPhases} index={index} error={errors?.PreferredPhases} />
 			<TaskCell name="MaxConcurrent" value={MaxConcurrent} index={index} error={errors?.MaxConcurrent} />
 			<TableCell className="flex , gap-5">
-				<AlertDelete index={index} />
+				<AlertDelete  />
 			</TableCell>
 		</TableRow>
 	)

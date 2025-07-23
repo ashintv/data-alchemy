@@ -1,6 +1,4 @@
-import { Download } from "../icons/download"
-import { Button } from "../ui/button"
-import { DownloadCSV } from "./download"
+
 
 export function Heading({ value }: { value: string}) {
 	return (

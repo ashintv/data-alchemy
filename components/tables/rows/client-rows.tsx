@@ -1,13 +1,9 @@
 import { TableCell, TableRow } from "@/components/ui/table"
-import { memo, useEffect } from "react"
+import { memo } from "react"
 import { ClientCell } from "../cell/client-cell"
-import { Button } from "@/components/ui/button"
-import { DeleteIcon } from "@/components/icons/delete"
-
 import { checkErrors } from "@/lib/validators/cliient-validator"
-import { Client } from "@/lib/store/data"
 import { AlertDelete } from "@/components/alerts/alertdelete"
-export const ClientRow = memo(({ ClientID, ClientName, index, RequestedTaskIDs, PriorityLevel, GroupTag, tasks, AttributesJSON }: RowsP) => {
+export const ClientRow = memo(function ClientRow({ ClientID, ClientName, index, RequestedTaskIDs, PriorityLevel, GroupTag, tasks, AttributesJSON }: RowsP) {
 	const error = checkErrors({
 		ClientID,
 		ClientName,
@@ -27,7 +23,7 @@ export const ClientRow = memo(({ ClientID, ClientName, index, RequestedTaskIDs, 
 				<ClientCell value={GroupTag} name="GroupTag" index={index} error={error?.GroupTag} />
 				<ClientCell value={AttributesJSON} name="GroupTag" index={index} error={error?.AttributesJSON} />
 				<TableCell>
-					<AlertDelete index={index} />
+					<AlertDelete  />
 				</TableCell>
 			</TableRow>
 		</>

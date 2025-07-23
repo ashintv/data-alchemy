@@ -1,6 +1,6 @@
 "use client"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Client, useDataStore } from "@/lib/store/data"
+import {  useDataStore } from "@/lib/store/data"
 import UploadSection from "../ui/forms/upload"
 import { Heading } from "./heading"
 import { useShallow } from "zustand/react/shallow"

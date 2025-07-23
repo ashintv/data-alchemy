@@ -7,13 +7,13 @@ import {
 } from "@/components/ui/select"
 
 
-export function Selector({ value, onChange }: SelectorProps) {
+export function Selector({ value }: SelectorProps) {
     return (
         <Select>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select a rule" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent >
                 <SelectItem value={value}>phaseWindow</SelectItem>
             </SelectContent>
         </Select>
@@ -21,5 +21,5 @@ export function Selector({ value, onChange }: SelectorProps) {
 }
 interface SelectorProps {
     value: string
-    onChange: (value: string) => void
+   
 }

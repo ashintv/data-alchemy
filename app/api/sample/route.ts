@@ -1,8 +1,6 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 import fs, { writeFileSync } from "fs"
 import { parse } from "csv-parse/sync"
-
-import { error } from "console"
 
 export async function GET() {
 	const client_path = "app/api/sample/client.csv"

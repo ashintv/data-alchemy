@@ -1,6 +1,5 @@
 "use client"
-import { useDataStore } from "@/lib/store/data"
-import axios from "axios"
+import { Client, Task, useDataStore, Worker } from "@/lib/store/data"
 import Papa from "papaparse"
 import { redirect } from "next/navigation"
 import { Input } from "../input"
@@ -15,7 +14,7 @@ export default function UploadSection() {
 			header: true,
 			skipEmptyLines: true,
 			complete: (result) => {
-				const data = result.data as any[]
+				const data = result.data as Client[]
 				setClients(() => data)
 			},
 		})
@@ -27,7 +26,7 @@ export default function UploadSection() {
 			header: true,
 			skipEmptyLines: true,
 			complete: (result) => {
-				const data = result.data as any[]
+				const data = result.data as Worker[]
 				setWorkers(() => data)
 			},
 		})
@@ -40,7 +39,7 @@ export default function UploadSection() {
 			header: true,
 			skipEmptyLines: true,
 			complete: (result) => {
-				const data = result.data as any[]
+				const data = result.data as Task[]
 				setTasks(() => data)
 			},
 		})

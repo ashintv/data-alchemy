@@ -1,7 +1,6 @@
 "use client"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { useDataStore } from "@/lib/store/data"
-import { AlertDelete } from "../alerts/alertdelete"
 import UploadSection from "../ui/forms/upload"
 import { Heading } from "./heading"
 import { WorkerRow } from "./rows/worker-rows"

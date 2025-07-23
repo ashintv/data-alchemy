@@ -3,9 +3,9 @@ import { useRuleForm } from "@/lib/store/data";
 import { Label } from "@radix-ui/react-label";
 import { memo } from "react";
 import { Button } from "../ui/button";
-import { useSidebar } from "../ui/sidebar";
 
-const SidebarFooterContainer = memo(() => {
+
+const SidebarFooterContainer = memo(function SidebarFooterContainer(){
     const setVisible = useRuleForm(s => s.setVisible)
    
     return (

@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import axios from "axios"
+// import axios from "axios"
 import { redirect } from "next/navigation"
 export default function Main() {
 	async function loadSample() {

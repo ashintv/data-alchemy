@@ -1,8 +1,8 @@
 import { Input } from "@/components/ui/input"
 import { TableCell } from "@/components/ui/table"
-import { useDataStore, Worker } from "@/lib/store/data"
+import { useDataStore } from "@/lib/store/data"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
-import { memo, useState } from "react"
+import { memo } from "react"
 import { useShallow } from "zustand/react/shallow"
 interface Props {
 	name:string
@@ -11,7 +11,7 @@ interface Props {
 	index: number
 }
 
-export const WorkerCell =  memo(({name , value, error , index}: Props)=> {
+export const WorkerCell =  memo(function WorkerCell({name , value, error , index}: Props){
 	const setWorkers = useDataStore(useShallow(s => s.setWorkers))
 	return (
 		<TableCell>

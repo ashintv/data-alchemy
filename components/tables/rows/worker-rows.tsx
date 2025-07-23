@@ -13,7 +13,7 @@ interface Worker {
 	WorkerGroup: string
 	QualificationLevel: string
 }
-export const WorkerRow = memo(({ WorkerID, Skills, WorkerName, index, AvailableSlots, MaxLoadPerPhase, WorkerGroup, QualificationLevel }: Worker) => {
+export const WorkerRow = memo(function WorkerRow({ WorkerID, Skills, WorkerName, index, AvailableSlots, MaxLoadPerPhase, WorkerGroup, QualificationLevel }: Worker) {
 	const error = checkErrorsWorker({
 		WorkerID,
 		Skills,
@@ -33,7 +33,7 @@ export const WorkerRow = memo(({ WorkerID, Skills, WorkerName, index, AvailableS
 			<WorkerCell value={WorkerGroup} index={index} name="WorkerGroup" error={error?.WorkerGroup} />
 			<WorkerCell value={QualificationLevel} index={index} name="QualificationLevel" error={error?.QualificationLevel} />
 			<TableCell className="flex , gap-5">
-				<AlertDelete index={index} />
+				<AlertDelete  />
 			</TableCell>
 		</TableRow>
 	)

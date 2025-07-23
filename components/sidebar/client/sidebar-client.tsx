@@ -1,5 +1,4 @@
 import { useDataStore } from "@/lib/store/data";
-import { Label } from "@radix-ui/react-label";
 import { useShallow } from "zustand/react/shallow";
 import { SortSelector } from "./selector-client";
 import { useEffect, useState } from "react";
@@ -16,11 +15,11 @@ export function SidebarClient() {
         } else if (selected === 'Req.Task') {
             setClients((clients_) => [...clients_].sort((a, b) => b.RequestedTaskIDs.length - a.RequestedTaskIDs.length))
         }
-    }, [selected])
+    }, [selected, setClients]);
     return (
         <div className="flex flex-col border rounded-xl p-2  text-md border-primary/20 gap-2">
             Sort by : <SortSelector value={selected} setSelected={setSelected} />
-            
+
         </div>
     )
 }

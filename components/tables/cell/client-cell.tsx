@@ -1,9 +1,9 @@
 import { Input } from "@/components/ui/input"
 import { TableCell } from "@/components/ui/table"
-import { Client, useDataStore } from "@/lib/store/data"
+import {  useDataStore } from "@/lib/store/data"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { Progress } from "@/components/ui/progress"
-import { memo, useEffect, useState } from "react"
+import { memo} from "react"
 import { useShallow } from "zustand/react/shallow"
 
 export const ClientCell = memo(function ClientCell({ value, error, index, name }: ClientCellI) {

@@ -1,6 +1,6 @@
 "use client"
 
-import { Rules } from "@/components/forms/rules"
+
 import ClientsTable from "@/components/tables/client"
 import { DownloadCSV } from "@/components/tables/download"
 import { TasksTable } from "@/components/tables/task"
@@ -48,7 +48,7 @@ const Dashboard = function Dashboard() {
 
 				</div>
 			</div>
-			{visible && <Rules />}
+			{/* {visible && <Rules />} */}
 			
 		</div>
 

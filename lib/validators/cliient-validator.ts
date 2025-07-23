@@ -4,7 +4,8 @@ export const checkErrors = (client: Client, tasks: string[]) => {
 	const errors_gen: Record<string, string> = {}
 	const parse = ClientSchema.safeParse(client)
 	if (!parse.success) {
-		const errors: any[] = JSON.parse(parse.error.message)
+		
+		const errors: Record<string, string>[] = JSON.parse(parse.error.message)
 		errors.forEach((x) => {
 			errors_gen[x.path[0]] = x.message
 		})

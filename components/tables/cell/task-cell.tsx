@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input"
 import { TableCell } from "@/components/ui/table"
-import { Client, Task, useDataStore } from "@/lib/store/data"
+import {  useDataStore } from "@/lib/store/data"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { useShallow } from "zustand/react/shallow"
 import { memo } from "react"
@@ -10,7 +10,7 @@ interface ClientCellI {
 	error?: string
 	index: number
 }
-export const TaskCell =memo( ({ value, error, index, name }: ClientCellI)=> {
+export const TaskCell =memo(function TaskCell({ value, error, index, name }: ClientCellI){
 	const hasError = !!error
 	const setTasks = useDataStore(useShallow((s) => s.setTasks))
 	return (
