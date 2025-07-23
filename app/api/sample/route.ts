@@ -4,11 +4,10 @@ import { parse } from "csv-parse/sync"
 import { join } from 'path';
 
 export async function GET() {
-	
 	const client_path = join(process.cwd(), 'public', 'sample', 'client.csv');
 	const task_path = join(process.cwd(), 'public', 'sample', 'tasks.csv');
 	const worker_path = join(process.cwd(), 'public', 'sample', 'workers.csv');
-	const filePath = "app/api/data.json"
+	const filePath = join(process.cwd(), 'public', 'sample', 'data.json');
 	try {
 		const client_csv = fs.readFileSync(client_path, "utf-8")
 		const task_csv = fs.readFileSync(task_path, "utf-8")
@@ -20,7 +19,6 @@ export async function GET() {
 
 
 		}
-
 		data.clients = parse(client_csv, {
 			columns: true,
 			skip_empty_lines: true,
