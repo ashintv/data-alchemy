@@ -2,9 +2,27 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { useDataStore } from "@/lib/store/data"
+import axios from "axios"
 import { redirect } from "next/navigation"
+import { set } from "zod"
 export default function Main() {
+	const setWorkers = useDataStore((state) => state.setWorkers)
+	const setTasks = useDataStore((state) => state.setTasks)
+	const setClients = useDataStore((state) => state.setClients)
+	async function loadSample() {
+		const res =await axios.get('https://data-alchemy-uebe.vercel.app/api/data')
+		console.log(res.data)
+		if (!res.data) {
+			alert("Failed to load sample data. Please try again later.")
+			return
+		}
+		setWorkers(() => res.data.data.workers)
+		setTasks(() => res.data.data.tasks)
+		setClients(() => res.data.data.clients)
 
+		redirect("/dashboard")
+	}
 	return (
 		<div className="overflow-scroll w-screen h-screen">
 			<div className="flex flex-col h-full bg-background text-foreground px-6 py-12">
@@ -18,7 +36,9 @@ export default function Main() {
 					</p>
 
 					<div className="flex gap-4 text-background">
-
+						<Button variant="default" size="lg" onClick={loadSample}>
+							Try Our Sample
+						</Button>
 						<Button
 							variant="secondary"
 							size="lg"
@@ -87,7 +107,7 @@ export default function Main() {
 								⚠️ Ensure the names of files provided is  workers.csv , tasks.csv , clients.csv
 								<br /><br />
 
-								💡 To avoid errors ensure your sample data will follow the schema
+								💡 To avoid errors ensure your sample data will follow the schema 
 							</pre>
 						</CardContent>
 					</Card>
