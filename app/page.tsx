@@ -5,12 +5,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { useDataStore } from "@/lib/store/data"
 import axios from "axios"
 import { redirect } from "next/navigation"
+import { useState } from "react"
 import { set } from "zod"
 export default function Main() {
 	const setWorkers = useDataStore((state) => state.setWorkers)
 	const setTasks = useDataStore((state) => state.setTasks)
 	const setClients = useDataStore((state) => state.setClients)
+	const [loading , setloading]=useState(false)
 	async function loadSample() {
+		setloading(true)
 		const res =await axios.get('https://data-alchemy-uebe.vercel.app//api/sample')
 		console.log(res.data)
 		if (!res.data) {
@@ -20,7 +23,7 @@ export default function Main() {
 		setWorkers(() => res.data.data.workers)
 		setTasks(() => res.data.data.tasks)
 		setClients(() => res.data.data.clients)
-
+		setloading(false)
 		redirect("/dashboard")
 	}
 	return (
@@ -36,8 +39,8 @@ export default function Main() {
 					</p>
 
 					<div className="flex gap-4 text-background">
-						<Button variant="default" size="lg" onClick={loadSample}>
-							Try Our Sample
+						<Button variant="default" size="lg" onClick={loadSample} disabled={loading}>
+							{loading?'loading...':"Try our Sample"}
 						</Button>
 						<Button
 							variant="secondary"
