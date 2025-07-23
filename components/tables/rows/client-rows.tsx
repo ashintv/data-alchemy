@@ -23,7 +23,7 @@ export const ClientRow = memo(function ClientRow({ ClientID, ClientName, index, 
 				<ClientCell value={GroupTag} name="GroupTag" index={index} error={error?.GroupTag} />
 				<ClientCell value={AttributesJSON} name="GroupTag" index={index} error={error?.AttributesJSON} />
 				<TableCell>
-					<AlertDelete  />
+					<AlertDelete index={index} table="clients"/>
 				</TableCell>
 			</TableRow>
 		</>

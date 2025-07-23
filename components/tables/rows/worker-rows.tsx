@@ -33,7 +33,7 @@ export const WorkerRow = memo(function WorkerRow({ WorkerID, Skills, WorkerName,
 			<WorkerCell value={WorkerGroup} index={index} name="WorkerGroup" error={error?.WorkerGroup} />
 			<WorkerCell value={QualificationLevel} index={index} name="QualificationLevel" error={error?.QualificationLevel} />
 			<TableCell className="flex , gap-5">
-				<AlertDelete  />
+				<AlertDelete index={index} table="workers" />
 			</TableCell>
 		</TableRow>
 	)

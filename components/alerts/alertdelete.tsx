@@ -10,18 +10,23 @@ import {
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
+import { useDataStore } from "@/lib/store/data"
 // import { Client, Task, useDataStore, Worker } from "@/lib/store/data"
 
-export function AlertDelete() {
-	// const { setClients ,  setWorkers , setTasks} = useDataStore()
-	// function handleDelete(){
-	// 	if (props.Clients){
-	// 		props.Clients.splice(props.index , 1)
-	// 	}
-	// 	else if(props.Tasks){
-	// 		props.Tasks.splice(props.index ,1)
-	// 	}
-	// }
+export function AlertDelete(props: AlertDeleteI) {
+	const setClients = useDataStore((state) => state.setClients)
+	const setWorkers = useDataStore((state) => state.setWorkers)
+	const setTasks = useDataStore((state) => state.setTasks)
+	function handleDelete() {
+		if (props.table === "clients") {
+			setClients((clients) => clients.filter((_, index) => index !== props.index))
+		} else if (props.table === "tasks") {
+			setTasks((tasks) => tasks.filter((_, index) => index !== props.index))
+		} else if (props.table === "workers") {
+			setWorkers((workers) => workers.filter((_, index) => index !== props.index))
+		}
+	}
+	
 	return (
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
@@ -37,15 +42,15 @@ export function AlertDelete() {
 				</AlertDialogHeader>
 				<AlertDialogFooter>
 					<AlertDialogCancel>Cancel</AlertDialogCancel>
-					<AlertDialogAction >Continue</AlertDialogAction>
+					<AlertDialogAction onClick={handleDelete}>Continue</AlertDialogAction>
 				</AlertDialogFooter>
 			</AlertDialogContent>
 		</AlertDialog>
 	)
 }
 
-// interface AlerDeleteI{
-// 	index : number , 
+interface AlertDeleteI{
+	index : number , 
+	table: "clients" | "tasks" | "workers"
 
-
-// }
+}

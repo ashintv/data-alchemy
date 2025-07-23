@@ -35,7 +35,7 @@ export const TaskRow = memo(function TaskRow({ TaskID, TaskName, WorkerSkills, C
 			<TaskCell name="PreferredPhases" value={PreferredPhases} index={index} error={errors?.PreferredPhases} />
 			<TaskCell name="MaxConcurrent" value={MaxConcurrent} index={index} error={errors?.MaxConcurrent} />
 			<TableCell className="flex , gap-5">
-				<AlertDelete  />
+				<AlertDelete index={index} table="tasks" />
 			</TableCell>
 		</TableRow>
 	)
