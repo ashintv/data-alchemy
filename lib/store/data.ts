@@ -44,8 +44,8 @@ export interface DataStore {
 	// Rules:Record<string, any> []
 	// setRules: (updater: (rules: Record<string, any> []) => Record<string, any> []) => void
 	setClients: (updater: (clients: Client[]) => Client[]) => void
-	setWorkers: (updater: (clients: Worker[]) => Worker[]) => void
-	setTasks: (updater: (clients: Task[]) => Task[]) => void
+	setWorkers: (updater: (workers: Worker[]) => Worker[]) => void
+	setTasks: (updater: (tasks: Task[]) => Task[]) => void
 }
 
 interface SideBarState {
@@ -74,13 +74,7 @@ export const useDataStore = create<DataStore>((set) => ({
 	clients: [],
 	workers: [],
 	tasks: [],
-	Rules:	[],
-	// setRules: (updater) => {
-	// 	set((state) => {
-	// 		const next = updater(state.Rules)
-	// 		return { Rules: next }
-	// 	})
-	// },
+
 	setClients: (updater) => {
 		set((state) => {
 			const next = updater(state.clients)

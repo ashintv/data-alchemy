@@ -10,7 +10,7 @@ interface ClientCellI {
 	error?: string
 	index: number
 }
-export const TaskCell =memo(function TaskCell({ value, error, index, name }: ClientCellI){
+export const TaskCell = memo(function TaskCell({ value, error, index, name }: ClientCellI){
 	const hasError = !!error
 	const setTasks = useDataStore(useShallow((s) => s.setTasks))
 	return (

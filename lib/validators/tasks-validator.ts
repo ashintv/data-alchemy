@@ -2,7 +2,8 @@ import { TaskSchema } from "../schema/tasks"
 import { Task } from "../store/data"
 
 
-export const checkErrorsTask = (task: Task, WorkerSkills: string[]) => {
+export const checkErrorsTask = (task: Task, skills: string[]) => {
+        const WorkerSkills = skills.map((x) => x.split(',').map((x)=>x.trim())).flat()
         const parse = TaskSchema.safeParse(task)
         const errors_gen: Record<string, string> = {}
         if (!parse.success) {

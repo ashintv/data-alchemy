@@ -14,7 +14,7 @@ interface TaskRowI {
 	MaxConcurrent: string
 	WorkerSkills:string []
 }
-export const TaskRow = memo(function TaskRow({ TaskID, TaskName, WorkerSkills, Category, Duration, RequiredSkills, index, PreferredPhases, MaxConcurrent }: TaskRowI) {
+export const TaskRow = memo(function TaskRow({ TaskID, TaskName, Category, Duration, RequiredSkills, index, PreferredPhases, MaxConcurrent,WorkerSkills }: TaskRowI) {
 	const errors = checkErrorsTask({
 		TaskID,
 		TaskName,

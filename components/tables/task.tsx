@@ -4,10 +4,11 @@ import UploadSection from "../ui/forms/upload"
 import { Heading } from "./heading"
 import { TaskRow } from "./rows/task-row"
 import { useShallow } from "zustand/react/shallow"
+import { use, useEffect } from "react"
 
 export function TasksTable() {
-	const tasks = useDataStore((s) => s.tasks)
-	const workers_skills = useDataStore(useShallow(x=>x.workers)).map((x=>x.Skills.split(',').map((x)=>x.trim()))).flat()
+	const tasks = useDataStore(useShallow((s) => s.tasks))
+	const workers_skills = useDataStore(useShallow((x)=>x.workers.map(s=>s.Skills)))
 	return (
 		<div className="flex">
 			<div className="h-screen w-full  overflow-scroll">
