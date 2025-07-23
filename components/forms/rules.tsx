@@ -38,8 +38,6 @@ export function Rules() {
 }
 
 
-
-
 function PhaseRuleHelper(tasks: Task[], phase: string[]): string[] {
     const phasesSet = new Set(phase)
     const result: string[] = []

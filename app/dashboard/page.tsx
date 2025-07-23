@@ -1,30 +1,28 @@
 "use client"
 
-import { Logo } from "@/components/icons/dataalchemist"
 import { Rules } from "@/components/forms/rules"
 import ClientsTable from "@/components/tables/client"
 import { DownloadCSV } from "@/components/tables/download"
 import { TasksTable } from "@/components/tables/task"
 import WorkersTable from "@/components/tables/workers"
 import { Button } from "@/components/ui/button"
-import { useDataStore, useRuleForm, useSidebar } from "@/lib/store/data"
-import { useEffect, useState } from "react"
-import { memo } from "react"
+import {  useRuleForm, useSidebar } from "@/lib/store/data"
+
 const Dashboard = function Dashboard() {
 	const { currentTab, setCurrentTab } = useSidebar()
 	const visible = useRuleForm(c => c.visible)
 	return (
-		<>
-			<div className="bg-primary/5 w-full ">
-				<div className=" h-full   overflow-scroll px-15 ">
+		<div className="relative">
+			<div className="bg-background w-full ">
+				<div className="h-full   overflow-scroll px-15">
 
 					{currentTab === "clients" && <ClientsTable />}
 					{currentTab === "workers" && <WorkersTable />}
 					{currentTab === "tasks" && <TasksTable />}
 
 				</div>
-				<div className="fixed flex bg-transparent justify-center top-5 w-full px-5 p-2 ">
-					<div className="flex  justify-center  bg-primary/2 items-center border border-primary/2 mx-10 h-10 px-20 rounded-full backdrop-blur-md  ">
+				<div className="absolute  bg-transparent flex  justify-center top-0 w-full ">
+					<div className="flex  justify-center  backdrop-blur items-center w-full  h-10    ">
 						<div className="flex gap-2  font-extrabold font-mono ">
 							<Button
 								onClick={() => setCurrentTab("clients")}
@@ -52,7 +50,7 @@ const Dashboard = function Dashboard() {
 			</div>
 			{visible && <Rules />}
 			
-		</>
+		</div>
 
 
 	)

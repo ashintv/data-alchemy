@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
 import fs, { writeFileSync } from "fs"
-import path from "path"
 import { parse } from "csv-parse/sync"
 
 import { error } from "console"
 
-export async function GET(req: NextRequest) {
+export async function GET() {
 	const client_path = "app/api/sample/client.csv"
 	const task_path = "app/api/sample/tasks.csv"
 	const worker_path = "app/api/sample/workers.csv"
@@ -37,7 +36,7 @@ export async function GET(req: NextRequest) {
 		writeFileSync(filePath, JSON.stringify(data, null, 2))
 		return NextResponse.json({ data })
 	} catch (e) {
-		console.log(error)
+		console.log(e)
 		return NextResponse.json({ error: "request failed" })
 	}
 }

@@ -6,8 +6,8 @@ import axios from "axios"
 import { redirect } from "next/navigation"
 export default function Main() {
 	async function loadSample() {
-		const res =await axios.get('http://localhost:3000/api/sample')
-		redirect("/dashboard")
+		// const res =await axios.get('http://localhost:3000/api/sample')
+		// redirect("/dashboard")
 	}
 	return (
 		<div className="overflow-scroll w-screen h-screen">

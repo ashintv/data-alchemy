@@ -10,12 +10,12 @@ export default function ClientTable() {
 	const clients  = useDataStore(useShallow((s) => s.clients))
 	const tasks = useDataStore(useShallow((s)=>s.tasks.map(x=>x.TaskID)))
 	return (
-		<div className="h-screen w-full overflow-scroll  ">
+		<div className="h-screen w-full overflow-scroll  shadow-primary shadow-2xs py-16 ">
 			<Heading value="Clients" />
-			<div className="bg-background  p-5  rounded-2xl ">
-				<div className="w-full overflow-x-scroll"> 
+			<div className="  p-5  rounded-2xl ">
+				<div className="w-full overflow-x-scroll "> 
 					<Table className="">
-						<TableHeader className="p-15">
+						<TableHeader className="">
 							<TableRow>
 								<TableHead>ClientID</TableHead>
 								<TableHead>ClientName</TableHead>
@@ -23,6 +23,7 @@ export default function ClientTable() {
 								<TableHead>RequestedTaskIDs</TableHead>
 								<TableHead>GroupTag</TableHead>
 								<TableHead>AttributesJSON</TableHead>
+								<TableHead>Actions</TableHead>
 								
 							</TableRow>
 						</TableHeader>
@@ -43,7 +44,7 @@ export default function ClientTable() {
 							))}
 							{clients.length === 0 && (
 								<TableRow>
-									<TableCell colSpan={6} className="text-center text-muted-foreground">
+									<TableCell colSpan={7} className="text-center text-muted-foreground">
 										<UploadSection />
 									</TableCell>
 								</TableRow>

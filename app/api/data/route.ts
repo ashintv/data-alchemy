@@ -8,7 +8,7 @@ const data = {
 import { readFileSync, writeFileSync } from "fs"
 
 //
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
 	const filePath = "app/api/data.json"
 	try {
 		const body = await req.json()

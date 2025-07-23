@@ -20,7 +20,7 @@ export function SidebarClient() {
     return (
         <div className="flex flex-col border rounded-xl p-2  text-md border-primary/20 gap-2">
             Sort by : <SortSelector value={selected} setSelected={setSelected} />
-            {<Label>Sort by: {selected}</Label>}
+            
         </div>
     )
 }

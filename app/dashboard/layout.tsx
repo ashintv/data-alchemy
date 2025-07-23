@@ -1,4 +1,4 @@
-import { Rules } from "@/components/forms/rules"
+
 import { AppSidebar } from "@/components/sidebar/app-sidebar"
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 

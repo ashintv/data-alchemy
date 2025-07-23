@@ -10,7 +10,7 @@ import { Dispatch, SetStateAction } from "react"
 
 export function SortSelector({ value, setSelected }: SelectorProps) {
     return (
-        <Select value={value}    onValueChange={(value) => {
+        <Select value={value} onValueChange={(value) => {
             setSelected(value as "Priority" | "ClientID" | "Req.Task");
         }}>
             <SelectTrigger className="w-[180px]">

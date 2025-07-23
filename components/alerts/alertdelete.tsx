@@ -25,7 +25,7 @@ export function AlertDelete(props:AlerDeleteI) {
 	return (
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
-				<Button variant="destructive">Delete</Button>
+				<Button className="rounded-none text-secondary" variant="link">Delete</Button>
 			</AlertDialogTrigger>
 			<AlertDialogContent>
 				<AlertDialogHeader>

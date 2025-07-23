@@ -23,8 +23,8 @@ export const TaskCell =memo( ({ value, error, index, name }: ClientCellI)=> {
 						</TooltipContent>
 					)}
 					<Input
-						className={hasError ? "border border-destructive" : ""}
-						value={String(value ?? "")}
+						className={hasError ? "border-b border-destructive" : ""}
+						value={value}
 						onChange={(e) => {
 							setTasks((c) =>
 								c.map((task, i) => {
