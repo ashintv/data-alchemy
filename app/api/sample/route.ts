@@ -17,7 +17,6 @@ export async function GET() {
 			workers: [],
 			tasks: []
 
-
 		}
 		data.clients = parse(client_csv, {
 			columns: true,
@@ -31,7 +30,6 @@ export async function GET() {
 			columns: true,
 			skip_empty_lines: true,
 		})
-		writeFileSync(filePath, JSON.stringify(data, null, 2))
 		return NextResponse.json({ data })
 	} catch (e) {
 		console.log(e)
