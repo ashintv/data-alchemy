@@ -11,7 +11,7 @@ export default function Main() {
 	const setTasks = useDataStore((state) => state.setTasks)
 	const setClients = useDataStore((state) => state.setClients)
 	async function loadSample() {
-		const res =await axios.get('https://data-alchemy-uebe-git-sampledata-ashintvs-projects.vercel.app/api/sample')
+		const res =await axios.get('https://data-alchemy-uebe.vercel.app//api/sample')
 		console.log(res.data)
 		if (!res.data) {
 			alert("Failed to load sample data. Please try again later.")
