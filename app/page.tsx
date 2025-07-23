@@ -2,18 +2,32 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-// import axios from "axios"
+import { useDataStore } from "@/lib/store/data"
+import axios from "axios"
 import { redirect } from "next/navigation"
+import { set } from "zod"
 export default function Main() {
+	const setWorkers = useDataStore((state) => state.setWorkers)
+	const setTasks = useDataStore((state) => state.setTasks)
+	const setClients = useDataStore((state) => state.setClients)
 	async function loadSample() {
-		// const res =await axios.get('http://localhost:3000/api/sample')
-		// redirect("/dashboard")
+		const res =await axios.get('http://localhost:3000/api/sample')
+		console.log(res.data)
+		if (!res.data) {
+			alert("Failed to load sample data. Please try again later.")
+			return
+		}
+		setWorkers(() => res.data.data.workers)
+		setTasks(() => res.data.data.tasks)
+		setClients(() => res.data.data.clients)
+
+		redirect("/dashboard")
 	}
 	return (
 		<div className="overflow-scroll w-screen h-screen">
 			<div className="flex flex-col h-full bg-background text-foreground px-6 py-12">
 				<section className="flex flex-col items-center mb-12">
-					<h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+					<h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-center">
 						Data Alchemy
 					</h1>
 
@@ -21,7 +35,7 @@ export default function Main() {
 						Manage your org intelligently. Try our sample or upload your own CSVs to start an alchemy session.
 					</p>
 
-					<div className="flex gap-4">
+					<div className="flex gap-4 text-background">
 						<Button variant="default" size="lg" onClick={loadSample}>
 							Try Our Sample
 						</Button>
@@ -36,7 +50,7 @@ export default function Main() {
 					</div>
 				</section>
 				<section className="w-full max-w-5xl mx-auto space-y-8">
-					<h2 className="text-3xl font-bold text-purple-400">📁 Supported CSV Schemas</h2>
+					<h2 className="text-3xl font-bold ">📁 Supported CSV Schemas</h2>
 
 					<Card>
 						<CardContent className="p-4">

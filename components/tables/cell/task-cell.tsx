@@ -23,7 +23,7 @@ export const TaskCell =memo(function TaskCell({ value, error, index, name }: Cli
 						</TooltipContent>
 					)}
 					<Input
-						className={hasError ? "border-b border-destructive" : ""}
+						className={hasError ? "border border-destructive" : ""}
 						value={value}
 						onChange={(e) => {
 							setTasks((c) =>
