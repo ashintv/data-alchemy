@@ -14,7 +14,7 @@ export default function Main() {
 	const [loading , setloading]=useState(false)
 	async function loadSample() {
 		setloading(true)
-		const res =await axios.get('https://data-alchemy-uebe.vercel.app//api/sample')
+		const res =await axios.get('http://localhost:3000/api/sample')
 		console.log(res.data)
 		if (!res.data) {
 			alert("Failed to load sample data. Please try again later.")
