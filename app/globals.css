@@ -50,12 +50,12 @@
   /* === Card & Popover === */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
-  --popover: #090608;
+  --popover: #171616;
   --popover-foreground: #ece9ec(0.141 0.005 285.823);
 
   /* === Muted === */
   --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: #061509;
+  --muted-foreground: #ffffff;
 
   /* === Accent Foreground (fix placement, fix syntax bug) === */
   --accent-foreground: oklch(0.21 0.006 285.885);
