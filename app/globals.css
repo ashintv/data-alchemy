@@ -46,7 +46,7 @@
   --foreground: #ece9ec;
   --primary: #c3d5d7;
   --secondary: #6c3660;
-  --accent: #ece9ec;
+  --accent: #ffffff;
   /* === Card & Popover === */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
