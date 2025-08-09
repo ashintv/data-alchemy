@@ -41,8 +41,6 @@ export interface DataStore {
 	clients: Client[]
 	workers: Worker[]
 	tasks: Task[]
-	// Rules:Record<string, any> []
-	// setRules: (updater: (rules: Record<string, any> []) => Record<string, any> []) => void
 	setClients: (updater: (clients: Client[]) => Client[]) => void
 	setWorkers: (updater: (workers: Worker[]) => Worker[]) => void
 	setTasks: (updater: (tasks: Task[]) => Task[]) => void
@@ -68,7 +66,6 @@ export const useSidebar = create<SideBarState>((set) => ({
 	setCurrentTab: (tab: "clients" | "workers" | "tasks") => set({ currentTab: tab })
 }))
 
-// Zustand store for managing clients, workers, and tasks data
 
 export const useDataStore = create<DataStore>((set) => ({
 	clients: [],
@@ -94,3 +91,5 @@ export const useDataStore = create<DataStore>((set) => ({
 		})
 	},
 }))
+
+
