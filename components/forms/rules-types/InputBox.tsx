@@ -17,7 +17,7 @@ export function InputBox({
 				<Input
 					value={value}
 					onChange={(e) => setValue(e.target.value)}
-					type="text"
+					type={typeof value === "number" ? "number" : "text"}
 					placeholder={placeholder}
 					className={clsx(
 						"border rounded-md p-2 w-full",
@@ -34,7 +34,7 @@ export function InputBox({
 interface InputBoxProps {
 	placeholder: string;
 	label: string;
-	value: string;
+	value: string | number;
 	setValue: (value: string) => void;
 	error?: string | null;
 	className?: string;

@@ -13,7 +13,7 @@ export function CoRun() {
 		useShallow((state) => state.tasks.map((task) => task.TaskID))
 	);
 
-	const setRules = useRulesStore(useShallow((state) => state.addRule));
+	const addRules = useRulesStore(useShallow((state) => state.addRule));
 	const [error, setError] = useState<ErrorType | null>(null);
 	useEffect(() => {
 		if (taskId.trim() === "") return;
@@ -77,7 +77,7 @@ export function CoRun() {
 			<h2 className="text-lg font-bold">Rule: CoRun</h2>
 
 			<InputBox
-				value={name}
+				value={name || `CoRun Rule ${Date.now()}`}
 				setValue={setName}
 				error={error?.name}
 				placeholder="Enter rule name"
@@ -107,7 +107,7 @@ export function CoRun() {
 							return;
 						}
 						if (error) return;
-						setRules({
+						addRules({
 							id: `rule-${Date.now()}`,
 							name,
 							type: "coRun",
