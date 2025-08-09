@@ -40,7 +40,7 @@ export function RulesForm() {
 					description="Load-limit: select a WorkerGroup + maxSlotsPerPhase"
 				/>
 				<RuleItem
-					onClick={() => setRule("Phase-window")}
+					onClick={() => setRule("Phase-Window")}
 					Name="Phase-window"
 					icon={<Grid2X2Check />}
 					description="Phase-window: pick a TaskID + allowed phase list/range

@@ -35,7 +35,6 @@ export function SlotRestriction() {
 				/>
 			
 			</div>
-
 			<Button variant={"secondary"} type="submit">Submit</Button>
 		</div>
 	);
