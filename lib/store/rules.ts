@@ -3,9 +3,8 @@ import { create } from "zustand";
 // Common base for all rules
 interface BaseRule {
 	id: string;
-	name: string;
-	description?: string;
-	priority: number;
+    name: string;
+    description?: string;
 }
 
 // 1. Co-run: run tasks together
@@ -61,32 +60,19 @@ type Rule =
 	| PatternMatchRule
 	| PrecedenceOverrideRule;
 
-// Example usage
-const exampleRule: Rule = {
-	id: "rule-001",
-	name: "Run Task 12 and 15 together",
-	type: "coRun",
-	tasks: ["task-12", "task-15"],
-	priority: 1,
-};
+
 
 interface RulesStore {
 	rules: Rule[];
-	setRules: (updater: (rules: Rule[]) => Rule[]) => void;
 	addRule: (rule: Rule) => void;
 	removeRule: (id: string) => void;
 }
 
 export const useRulesStore = create<RulesStore>((set) => ({
 	rules: [],
-	setRules: (updater) => {
-		set((state) => ({
-			rules: updater(state.rules),
-		}));
-	},
 	addRule: (rule) => {
 		set((state) => ({
-			rules: [...state.rules, rule],
+			rules: [rule, ...state.rules.filter((r) => r.id !== rule.id)],
 		}));
 	},
 	removeRule: (id) => {

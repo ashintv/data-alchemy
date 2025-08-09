@@ -1,35 +1,42 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { useDataStore } from "@/lib/store/data";
-import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
 import { useShallow } from "zustand/react/shallow";
-import { useDebounce } from "@/hooks/useDebounce";
+import { useRulesStore } from "@/lib/store/rules";
+import { InputBox } from "./InputBox";
 
 export function CoRun() {
+	const [name, setName] = useState<string>("");
 	const [taskId, setTaskId] = useState<string>("");
 	const [selectedTasks, setSelectedTasks] = useState<string[]>([]);
 	const taskIds = useDataStore(
 		useShallow((state) => state.tasks.map((task) => task.TaskID))
 	);
-	const [error, setError] = useState<string | null>(null);
+
+	const setRules = useRulesStore(useShallow((state) => state.addRule));
+	const [error, setError] = useState<ErrorType | null>(null);
 	useEffect(() => {
 		if (taskId.trim() === "") return;
-        let values: string[];
-        if (taskId.includes("-")) {
-            values = taskId.split("-").map((v) => v.trim());
-        } else {
-            values = taskId.split(",").map((v) => v.trim());
-        }
+		let values: string[];
+		if (taskId.includes("-")) {
+			values = taskId.split("-").map((v) => v.trim());
+		} else {
+			values = taskId.split(",").map((v) => v.trim());
+		}
 		for (const value of values) {
 			if (!taskIds.includes(value)) {
-				setError(`Invalid Task ID: ${value}`);
+				if (!error) {
+					setError((prev) => ({
+						...prev,
+						task: `Invalid Task ID: ${value}`,
+					}));
+				}
 				return;
 			}
 		}
 		setError(null);
 	}, [taskId, taskIds]);
-	const AddTasks = () => {    
+	const AddTasks = () => {
 		if (taskId) {
 			if (taskId.trim() !== "") {
 				if (taskId.includes("-")) {
@@ -46,41 +53,76 @@ export function CoRun() {
 					}
 					setTaskId(newTaskIds.join(", "));
 					if (error) return;
-					setSelectedTasks((prev) => [...prev, ...newTaskIds]);
+					setSelectedTasks((prev) => {
+						const newTasks = newTaskIds.filter((id) => !prev.includes(id));
+						return [...prev, ...newTasks];
+					});
 					setTaskId("");
 					return;
 				}
 				const values = taskId.split(",").map((id) => id.trim());
-				setSelectedTasks((prev) => [...prev, ...values]);
+				setSelectedTasks((prev) => {
+					const newTasks = values.filter((id) => !prev.includes(id));
+					console.log("New Tasks:", newTasks);
+					console.log("Previous Tasks:", prev);
+					return [...prev, ...newTasks];
+				});
 				setTaskId("");
 			}
 		}
 	};
 
 	return (
-		<div className="w-xl">
+		<div className="w-xl flex flex-col gap-4">
 			<h2 className="text-lg font-bold">Rule: CoRun</h2>
-			<div className="flex gap-2 items-center">
-				<div className="">TaskID</div>
-				<Input
-					value={taskId}
-					className={`border border-border rounded-md p-2 w-full ${
-						error ? "border-red-500" : ""
-					}`}
-					onChange={(e) => setTaskId(e.target.value)}
-					type="text"
-					placeholder="T23"
-				/>
 
+			<InputBox
+				value={name}
+				setValue={setName}
+				error={error?.name}
+				placeholder="Enter rule name"
+				label="Name"
+			/>
+			<div className="flex gap-2 items-center justify-between">
+				<InputBox
+					value={taskId}
+					setValue={setTaskId}
+					error={error?.task}
+					placeholder="Enter Task ID"
+					label="TaskID"
+				/>
 				<Button onClick={AddTasks}>Add Task</Button>
 			</div>
-			<Label className="text-red-500 text-xs">{error}</Label>
-			<div className="flex justify-between items-center mt-4">
-				<div className="flex-wrap">
+
+			<div className="flex justify-between items-center mt-4 gap-2">
+				<div className="flex-wrap bg-primary rounded-xl p-4 w-full">
 					Selected Tasks: {selectedTasks.join(", ")}
 				</div>
-				<Button variant={"secondary"}>Add Rule</Button>
+				<Button
+					variant={"secondary"}
+					className="text-primary h-full rounded-2xl"
+					onClick={() => {
+						if (name.trim() === "") {
+							setError({ name: "Name is required" });
+							return;
+						}
+						if (error) return;
+						setRules({
+							id: `rule-${Date.now()}`,
+							name,
+							type: "coRun",
+							tasks: selectedTasks,
+						});
+						setSelectedTasks([]);
+					}}>
+					Add Rule
+				</Button>
 			</div>
 		</div>
 	);
+}
+
+interface ErrorType {
+	task?: string;
+	name?: string;
 }
