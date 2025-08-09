@@ -55,7 +55,7 @@
 
   /* === Muted === */
   --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: #ffffff;
+  --muted-foreground: #8d8d8d;
 
   /* === Accent Foreground (fix placement, fix syntax bug) === */
   --accent-foreground: oklch(0.21 0.006 285.885);
