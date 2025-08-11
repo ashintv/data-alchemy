@@ -1,10 +1,11 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 // Common base for all rules
 interface BaseRule {
 	id: string;
-    name: string;
-    description?: string;
+	name: string;
+	description?: string;
 }
 
 // 1. Co-run: run tasks together
@@ -60,24 +61,29 @@ type Rule =
 	| PatternMatchRule
 	| PrecedenceOverrideRule;
 
-
-
 interface RulesStore {
 	rules: Rule[];
 	addRule: (rule: Rule) => void;
 	removeRule: (id: string) => void;
 }
-
-export const useRulesStore = create<RulesStore>((set) => ({
-	rules: [],
-	addRule: (rule) => {
-		set((state) => ({
-			rules: [rule, ...state.rules.filter((r) => r.id !== rule.id)],
-		}));
-	},
-	removeRule: (id) => {
-		set((state) => ({
-			rules: state.rules.filter((r) => r.id !== id),
-		}));
-	},
-}));
+export const useRulesStore = create<RulesStore>()(
+	persist(
+		(set) => ({
+			rules: [],
+			addRule: (rule) => {
+				set((state) => ({
+					rules: [rule, ...state.rules.filter((r) => r.id !== rule.id)],
+				}));
+				console.log("current rules:", useRulesStore.getState().rules);
+			},
+			removeRule: (id) =>
+				set((state) => ({
+					rules: state.rules.filter((r) => r.id !== id),
+				})),
+		}),
+		{
+			name: "rules-store",
+			storage: createJSONStorage(() => sessionStorage),
+		}
+	)
+);

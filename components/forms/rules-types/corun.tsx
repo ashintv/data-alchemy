@@ -77,10 +77,10 @@ export function CoRun() {
 			<h2 className="text-lg font-bold">Rule: CoRun</h2>
 
 			<InputBox
-				value={name || `CoRun Rule ${Date.now()}`}
+				value={name}
 				setValue={setName}
 				error={error?.name}
-				placeholder="Enter rule name"
+				placeholder={`CoRun Rule ${Date.now()}`}
 				label="Name"
 			/>
 			<div className="flex gap-2 items-center justify-between">
@@ -109,7 +109,7 @@ export function CoRun() {
 						if (error) return;
 						addRules({
 							id: `rule-${Date.now()}`,
-							name,
+							name: name || `CoRun Rule ${Date.now()}`,
 							type: "coRun",
 							tasks: selectedTasks,
 						});
