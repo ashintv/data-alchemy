@@ -1,7 +1,7 @@
 import { Input } from "../ui/input"
 import { CoRun } from "./rules-types/corun"
 import { LoadLimit } from "./rules-types/loadlimit";
-import { PatternMatch } from "./rules-types/patternMatch";
+import { AiRules } from "./rules-types/airules";
 import { PhaseWindow } from "./rules-types/phaseWindow";
 import { SlotRestriction } from "./rules-types/slotRestriction";
 
@@ -11,7 +11,7 @@ export function RuleInput({ rule }: RuleInputProps){
 				{rule === "CoRun" && <CoRun />}
 				{rule === "Slot Restriction" && <SlotRestriction />}
 				{rule === "Phase-Window" && <PhaseWindow />}
-				{rule === "Pattern-match" && <PatternMatch />}
+				{rule === "Pattern-match" && <AiRules />}
 				{rule === "Load-limit" && <LoadLimit />}
 			</>
 		);

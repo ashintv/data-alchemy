@@ -1,3 +1,4 @@
+import { int } from "zod";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
@@ -52,13 +53,20 @@ interface PrecedenceOverrideRule extends BaseRule {
 	priorityOrder: "globalFirst" | "specificFirst";
 }
 
+
+interface AiRules extends BaseRule {
+	type: "AI";
+	rule: any;
+}
+
 // Union type for all rule variants
-type Rule =
+export type Rule =
 	| CoRunRule
 	| SlotRestrictionRule
 	| LoadLimitRule
 	| PhaseWindowRule
 	| PatternMatchRule
+	| AiRules
 	| PrecedenceOverrideRule;
 
 interface RulesStore {
