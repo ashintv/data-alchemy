@@ -14,6 +14,7 @@ import { Button } from "../ui/button";
 import { RuleInput } from "./ruleInput";
 import { useState } from "react";
 import { Card } from "../ui/card";
+import { AiIcon } from "../icons/ai";
 
 export function RulesForm() {
 	const [rule, setRule] = useState<string | null>(null);
@@ -48,10 +49,9 @@ export function RulesForm() {
 				/>
 				<RuleItem
 					onClick={() => setRule("Pattern-match")}
-					Name="Pattern-match"
-					icon={<LetterText />}
-					description="Pattern-match: enter a regex + choose a rule template + parameters
-"
+					Name="The Alchemist AI"
+					icon={<AiIcon />}
+					description="Ask out Alchemist Ai to create a rule for you."
 				/>
 				<RuleItem
 					onClick={() => setRule("Precedence override")}
@@ -61,18 +61,12 @@ export function RulesForm() {
 				/>
 			</div>
 			{rule && (
-				<div className="flex gap-5 ">
+				<div className="flex gap-5 justify-center  ">
 					<Card className="border p-4 rounded-2xl w-fit bg-muted">
 						{" "}
 						<RuleInput rule={rule} />
 					</Card>
-					<div className=" w-full flex justify-center items-center">
-						<img
-							className="h-32 w-32"
-							src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2xkcjdqMXptMDBhcG4xZXZvYWtzdDE5MmZwZ3ZxejNtZXA1NHNjeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/hyhYBAalXnSJy7RDoh/giphy.gif"
-							alt=""
-						/>
-					</div>
+					
 				</div>
 			)}
 		</div>
