@@ -22,7 +22,7 @@ export function InputBox({
 					className={clsx(
 						"border rounded-md p-2 w-full",
 						error && "border-red-500",
-						className // external styles
+						className 
 					)}
 				/>
                 <span className="text-red-500 text-xs">{error}</span>

@@ -12,7 +12,7 @@ import { HTTP_SERVER } from "@/config";
 import { Rule } from "@/lib/store/rules";
 import axios from "axios";
 import { useState } from "react";
-import { set } from "zod";
+
 
 export function AiRules() {
 	const [loading, setLoading] = useState(false);

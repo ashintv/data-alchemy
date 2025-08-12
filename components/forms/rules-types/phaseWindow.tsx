@@ -41,7 +41,7 @@ export function PhaseWindow() {
 			return;
 		}
 		setSelectedPhases((prev) => Array.from(new Set([...prev, ...phases])));
-		setPhaseWindow(""); // clear input after adding
+		setPhaseWindow(""); 
 		setError(null);
 	}
 
